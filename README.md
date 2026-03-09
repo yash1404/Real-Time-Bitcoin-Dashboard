@@ -81,25 +81,31 @@ The application supports **light and dark themes** using **React Context** and *
 
 # ⚙️ Getting Started
 
-### 1️⃣ Install dependencies
+### 1️⃣ Clone Repository
+
+```
+https://github.com/yash1404/Real-Time-Bitcoin-Dashboard.git
+```
+
+### 2️⃣ Install dependencies
 
 ```
 npm install
 ```
 
-### 2️⃣ Run development server
+### 3️⃣ Run development server
 
 ```
 npm run dev
 ```
 
-### 3️⃣ Build for production
+### 4️⃣ Build for production
 
 ```
 npm run build
 ```
 
-### 4️⃣ Preview production build
+### 5️⃣ Preview production build
 
 ```
 npm run preview
@@ -107,6 +113,18 @@ npm run preview
 
 ---
 
+# 🖼 Dashboard Preview
+
+### Dark Mode UI
+<img width="1366" height="953" alt="BTC-DashBoard-DarkMode" src="https://github.com/user-attachments/assets/fbd47182-c33f-4441-8dd9-1f1d42583479" />
+
+### Light Mode UI
+
+<img width="1366" height="953" alt="BTC-DashBoard-LightMode" src="https://github.com/user-attachments/assets/c51ca8d9-a4b8-4160-96b2-81d6e850809c" />
+
+
 # 📄 License
 
 This project is built for a technical assignment.
+
+
