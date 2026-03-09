@@ -1,16 +1,112 @@
-# React + Vite
+# 🚀 Real-Time BTC/USDT Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **real-time Bitcoin dashboard** built with **React + Vite** that streams live BTC/USDT market data using the **Bybit WebSocket API** and displays it alongside a **TradingView advanced chart**.
 
-Currently, two official plugins are available:
+The dashboard updates automatically as new market data arrives and supports **light/dark theme switching**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 📡 Real-time BTC price updates using WebSocket
+* 📊 Market statistics cards
 
-## Expanding the ESLint configuration
+  * BTC Price
+  * Mark Price
+  * 24h High
+  * 24h Low
+  * 24h Volume
+  * 24h % Change
+* 📈 TradingView Advanced Chart integration
+* 🎨 Light / Dark mode toggle
+* 🟢 Price increase indicator (green)
+* 🔴 Price decrease indicator (red)
+* 🔁 Automatic WebSocket reconnection
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+# 🛠 Tech Stack
+
+* **React**
+* **Vite**
+* **JavaScript**
+* **WebSocket API**
+* **TradingView Widget**
+* **CSS**
+
+---
+
+# 📂 Project Structure
+
+```
+src
+│
+├── components
+│   ├── StatCard
+│   ├── TradingViewChart
+│   └── ThemeToggle
+│
+├── context
+│   └── ThemeContext.jsx
+│
+├── hooks
+│   └── usePrevious.js
+│
+├── services
+│   └── websocket.js
+│
+├── pages
+│   └── Dashboard.jsx
+│
+├── styles
+│   ├── globals.css
+│   └── themes.css
+│
+├── utils
+│   └── formatNumber.js
+│
+├── App.jsx
+└── main.jsx
+```
+
+# 🎨 Theme Support
+
+The application supports **light and dark themes** using **React Context** and **CSS variables**.
+
+* Theme is stored in **localStorage**
+* UI updates instantly when switching themes
+* TradingView chart theme updates as well
+
+---
+
+# ⚙️ Getting Started
+
+### 1️⃣ Install dependencies
+
+```
+npm install
+```
+
+### 2️⃣ Run development server
+
+```
+npm run dev
+```
+
+### 3️⃣ Build for production
+
+```
+npm run build
+```
+
+### 4️⃣ Preview production build
+
+```
+npm run preview
+```
+
+---
+
+# 📄 License
+
+This project is built for a technical assignment.

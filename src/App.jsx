@@ -1,15 +1,12 @@
-import { useState } from 'react'
+import Dashboard from './pages/Dashboard.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <h1>Hello World</h1>
-      </div>
-    </>
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>
   );
 }
 
-export default App
+export default App;
