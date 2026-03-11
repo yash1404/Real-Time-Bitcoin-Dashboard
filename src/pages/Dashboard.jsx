@@ -1,16 +1,19 @@
-import { useEffect, useMemo, useState } from 'react';
-import { subscribeToTicker, subscribeToConnectionStatus } from '../services/websocket.js';
-import usePrevious from '../hooks/usePrevious.js';
-import { formatNumber } from '../utils/formatNumber.js';
-import StatCard from '../components/StatCard/StatCard.jsx';
-import TradingViewChart from '../components/TradingViewChart/TradingViewChart.jsx';
-import ThemeToggle from '../components/ThemeToggle/ThemeToggle.jsx';
-import { useTheme } from '../context/ThemeContext.jsx';
+import { useEffect, useMemo, useState } from "react";
+import {
+  subscribeToTicker,
+  subscribeToConnectionStatus,
+} from "../services/websocket.js";
+import usePrevious from "../hooks/usePrevious.js";
+import { formatNumber } from "../utils/formatNumber.js";
+import StatCard from "../components/StatCard/StatCard.jsx";
+import TradingViewChart from "../components/TradingViewChart/TradingViewChart.jsx";
+import ThemeToggle from "../components/ThemeToggle/ThemeToggle.jsx";
+import { useTheme } from "../context/ThemeContext.jsx";
 
 function Dashboard() {
   const [ticker, setTicker] = useState(null);
   const previousPrice = usePrevious(ticker?.lastPrice);
-  const [connectionStatus, setConnectionStatus] = useState('disconnected');
+  const [connectionStatus, setConnectionStatus] = useState("disconnected");
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -47,15 +50,12 @@ function Dashboard() {
     };
   }, []);
 
-  const priceTrend = useMemo(() => {
-    if (!ticker || previousPrice == null) return 'none';
-    if (ticker.lastPrice > previousPrice) return 'up';
-    if (ticker.lastPrice < previousPrice) return 'down';
-    return 'none';
-  }, [ticker, previousPrice]);
-
   const priceChange24h = useMemo(() => {
-    if (!ticker || ticker.lastPrice == null || ticker.change24hPercent == null) {
+    if (
+      !ticker ||
+      ticker.lastPrice == null ||
+      ticker.change24hPercent == null
+    ) {
       return null;
     }
     const diff = (ticker.lastPrice * ticker.change24hPercent) / 100;
@@ -64,13 +64,13 @@ function Dashboard() {
   }, [ticker]);
 
   const statusLabel =
-    connectionStatus === 'connected'
-      ? 'Connected'
-      : connectionStatus === 'connecting'
-        ? 'Connecting...'
-        : connectionStatus === 'error'
-          ? 'Error - retrying'
-          : 'Disconnected';
+    connectionStatus === "connected"
+      ? "Connected"
+      : connectionStatus === "connecting"
+        ? "Connecting..."
+        : connectionStatus === "error"
+          ? "Error - retrying"
+          : "Disconnected";
 
   return (
     <div className="app-root">
@@ -85,11 +85,11 @@ function Dashboard() {
           <div className="ws-status">
             <span
               className={`ws-status-dot ${
-                connectionStatus === 'connected'
-                  ? 'ws-status-dot--connected'
-                  : connectionStatus === 'error'
-                    ? 'ws-status-dot--error'
-                    : ''
+                connectionStatus === "connected"
+                  ? "ws-status-dot--connected"
+                  : connectionStatus === "error"
+                    ? "ws-status-dot--error"
+                    : ""
               }`}
             />
             <span>{statusLabel}</span>
@@ -108,7 +108,7 @@ function Dashboard() {
                     maximumFractionDigits: 2,
                     minimumFractionDigits: 2,
                   })}`
-                : '-'
+                : "-"
             }
             subtitle={
               ticker ? (
@@ -117,15 +117,15 @@ function Dashboard() {
                   {priceChange24h != null && (
                     <span
                       style={{
-                        display: 'block',
+                        display: "block",
                         marginTop: 2,
                         color:
                           priceChange24h > 0
-                            ? 'var(--color-accent-positive)'
-                            : 'var(--color-accent-negative)',
+                            ? "var(--color-accent-positive)"
+                            : "var(--color-accent-negative)",
                       }}
                     >
-                      {priceChange24h > 0 ? '+' : '-'}
+                      {priceChange24h > 0 ? "+" : "-"}
                       {`$${formatNumber(Math.abs(priceChange24h), {
                         maximumFractionDigits: 2,
                         minimumFractionDigits: 2,
@@ -134,7 +134,7 @@ function Dashboard() {
                   )}
                 </>
               ) : (
-                'Waiting for live data...'
+                "Waiting for live data..."
               )
             }
             trend="none"
@@ -148,7 +148,7 @@ function Dashboard() {
                     maximumFractionDigits: 2,
                     minimumFractionDigits: 2,
                   })}`
-                : '-'
+                : "-"
             }
             subtitle="Fair price used for margin calculations"
           />
@@ -161,7 +161,7 @@ function Dashboard() {
                     maximumFractionDigits: 2,
                     minimumFractionDigits: 2,
                   })}`
-                : '-'
+                : "-"
             }
             subtitle="Highest traded price in the last 24 hours"
           />
@@ -174,7 +174,7 @@ function Dashboard() {
                     maximumFractionDigits: 2,
                     minimumFractionDigits: 2,
                   })}`
-                : '-'
+                : "-"
             }
             subtitle="Lowest traded price in the last 24 hours"
           />
@@ -186,7 +186,7 @@ function Dashboard() {
                 ? `$${formatNumber(ticker.volume24h, {
                     maximumFractionDigits: 0,
                   })}`
-                : '-'
+                : "-"
             }
             subtitle="Notional trading volume over the last 24 hours"
           />
@@ -196,18 +196,18 @@ function Dashboard() {
             value={
               ticker
                 ? formatNumber(ticker.change24hPercent, {
-                    style: 'percent',
+                    style: "percent",
                     maximumFractionDigits: 2,
                   })
-                : '-'
+                : "-"
             }
             subtitle="Relative price change over the last 24 hours"
             trend={
               !ticker || ticker.change24hPercent === 0
-                ? 'none'
+                ? "none"
                 : ticker.change24hPercent > 0
-                  ? 'up'
-                  : 'down'
+                  ? "up"
+                  : "down"
             }
           />
         </section>
@@ -216,7 +216,8 @@ function Dashboard() {
           <div className="chart-header">
             <h2 className="chart-title">BTC/USDT Advanced Chart</h2>
             <span className="chart-theme-indicator">
-              Chart theme: <strong>{theme === 'light' ? 'Light' : 'Dark'}</strong>
+              Chart theme:{" "}
+              <strong>{theme === "light" ? "Light" : "Dark"}</strong>
             </span>
           </div>
           <TradingViewChart theme={theme} />
@@ -227,4 +228,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
